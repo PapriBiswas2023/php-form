@@ -14,9 +14,9 @@
     </head>
     <body>
         <form action="organization_process.php" method="post">
-          <label>Organization Name</label>
-           <input type="text" name="org" id="org" placeholder="Organization"><br>
-          <label>City</label>
+          <label for="orgnname">Organization Name</label>
+           <input type="text" name="orgname" id="orgname" placeholder="Organization"><br>
+          <label for="city">City</label>
           <input type="text" name="city" id="city"><br>
           <label for="dsg">Designation</label>
            <input type="text" id="dsg" name="dsg" placeholder="Designation"><br>
