@@ -20,13 +20,23 @@
             <label for="age">Age</label>
            <input type="number" id="age" name="age" placeholder="age"><br>
            <label for="dsg">Designation</label>
-           <select>
+           <select name="dsg" id="dsg">
             <option value="">Select Designation</option>
-           </select>
-           <label>Organization</label>
-           <select>
-            <option value="">Select Organization</option>
-           </select>
+            <?php 
+            $sql="SELECT dsg FROM organization";
+            $query=mysqli_query($conn,$sql);
+            $num=mysqli_num_rows($query);
+            if($num>0)
+            {
+                while($row=mysqli_fetch_assoc($query))
+                {
+                    ?>
+                   <option value='".$row["dsg"]."'>" . $row["dsg"] . "</option>
+              <?php  }
+            }
+            ?>
+          </select>
+           
            <label>Upload Image</label>
            <input type="file" id="photo" placeholder="upload image"><br>
            <button type="submit">Submit</button>
