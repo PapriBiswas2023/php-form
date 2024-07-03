@@ -23,18 +23,31 @@
            <select name="dsg" id="dsg">
             <option value="">Select Designation</option>
             <?php 
-            $sql="SELECT dsg FROM organization";
-            $query=mysqli_query($conn,$sql);
-            $num=mysqli_num_rows($query);
-            if($num>0)
+            $sql = "SELECT dsg FROM organization";
+            $query = mysqli_query($conn, $sql);
+
+            if (!$query) {
+                die("Query failed: " . mysqli_error($conn));
+            }
+
+            $num = mysqli_num_rows($query);
+            if($num > 0)
             {
-                while($row=mysqli_fetch_assoc($query))
+                while($row = mysqli_fetch_assoc($query))
                 {
-                    ?>
-                   <option value='".$row["dsg"]."'>" . $row["dsg"] . "</option>
-              <?php  }
+                    echo "<option value='" . $row["dsg"] . "'>" . $row["dsg"] . "</option>";
+                }
+            } else {
+                echo "<option value=''>No designations available</option>";
             }
             ?>
+          </select>
+          <br>
+          <label>Organization</label>
+          <select name="orgid" id="orgid">
+            <option value="">Select organization</option>
+            
+
           </select>
            
            <label>Upload Image</label>
