@@ -12,6 +12,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
         <form action="form-process.php" method="post" enctype="multipart/from-data">
@@ -43,18 +44,36 @@
             ?>
           </select>
           <br>
-          <label>Organization</label>
+          <label for="orgid">Organization</label>
           <select name="orgid" id="orgid">
             <option value="">Select organization</option>
-            
+           
 
           </select>
-           
+           <br>
            <label>Upload Image</label>
            <input type="file" id="photo" placeholder="upload image"><br>
            <button type="submit">Submit</button>
         </form>
         
-        <script src="" async defer></script>
+        <script>
+            $(document).ready(function() {
+                $('#dsg').change(function() {
+                    var designation = $(this).val();
+                    if (designation) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'fetch-organizations.php',
+                            data: 'dsg=' + designation,
+                            success: function(html) {
+                                $('#orgid').html(html);
+                            }
+                        });
+                    } else {
+                        $('#orgid').html('<option value="">Select Organization</option>');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
