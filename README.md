@@ -9,6 +9,7 @@ This repository contains a simple yet functional **PHP Form Handling** project. 
 
 ## 📁 Project Structure
 
+
 php-form/
 ├── form.html # HTML form page
 ├── process.php # Backend PHP script to handle form data
